@@ -13,8 +13,10 @@ export default class Main extends React.Component{
           )
         })
         return(
-           <div>
-             {mainLists}
+           <div className="mainPage">
+             <table cellPadding="0" cellSpacing="0">
+               <tbody>{mainLists}</tbody>
+             </table>
            </div>
         )
       }
