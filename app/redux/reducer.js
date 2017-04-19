@@ -10,6 +10,12 @@ const mainList=(state=[],action) =>{
   switch (action.type) {
     case 'GET_LATEST':
 			return action.data.data.stories
+    default:
+      return state
+  }
+}
+const ThemesContainer=(state=[],action) =>{
+  switch (action.type) {
     case 'GET_THEME':
       return action.theme.data.data.stories
     default:
@@ -24,4 +30,4 @@ const mainList=(state=[],action) =>{
 
    }
 }*/
-export {themeList,mainList}
+export {themeList,mainList,ThemesContainer}

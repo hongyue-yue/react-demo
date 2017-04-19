@@ -19,9 +19,8 @@ export const get_list_data=()=>{
    }
 }
 export const get_theme=(id)=>{
-  return (dispatch,getState)=>{
+  return (dispatch)=>{
      axios.get('/api/theme/',{params:{id}}).then(function(data){
-				 console.log(data)
          dispatch(GET_THEME(data))
 		 })
 

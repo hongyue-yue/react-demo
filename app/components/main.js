@@ -3,8 +3,8 @@ import MainList from './mainList'
 import "../style/style.scss"
 
 export default class Main extends React.Component{
-      constructor(props) {
-          super(props)
+      constructor(props,context) {
+          super(props,context)
       }
       render(){
         const mainLists=this.props.mainLists.map((mainList,id) =>{

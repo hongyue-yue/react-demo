@@ -3,8 +3,8 @@ import MenuItem from "./menuItem"
 import "../style/style.scss"
 
 export default class Header extends React.Component{
-    constructor(props) {
-       super(props);
+    constructor(props,context) {
+       super(props,context);
        this.state={animate:false,aniCon:false}
        this.handleToggleTheme=this.handleToggleTheme.bind(this)
        this.handleFirstTheme=this.handleFirstTheme.bind(this)
@@ -13,13 +13,15 @@ export default class Header extends React.Component{
        this.animateCon=this.animateCon.bind(this)
     }
     handleToggleTheme(id){
-       if(id){
+      
+      this.context.router.push(`/theme/${id}`)
+       /*if(id){
          this.props.action.get_theme(id)
-       }
+       }*/
        this.animeteOutUl()
     }
     handleFirstTheme(){
-       this.props.action.get_list_data()
+       this.context.router.push(`/`)
        this.animeteOutUl()
     }
     animateIn(){
@@ -51,4 +53,7 @@ export default class Header extends React.Component{
        </div>
       );
    }
+}
+Header.contextTypes = {
+    router: React.PropTypes.object.isRequired
 }
