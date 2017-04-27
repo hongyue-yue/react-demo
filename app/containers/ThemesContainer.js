@@ -11,10 +11,14 @@ class ThemesContainer extends React.Component{
 		super(props,context)
 	}
   componentWillMount(){
+
      this.props.action.get_theme(this.props.params.themeId)
   }
-  componentWillUpdate(nextProp,nextState){
-		console.log(nextProp)
+  componentWillReceiveProps(nextProp,nextState){
+		if(this.props.params.themeId!=nextProp.params.themeId){
+        this.props.action.get_theme(nextProp.params.themeId)
+    }
+    //this.props.action.get_theme(this.props.params.themeId)
 	}
   render(){
      const {ThemesContainer}=this.props
