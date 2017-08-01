@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux'
 
 import * as Action from "../redux/action"
 import Header from '../components/header'
-import '../style/style.scss'
+
 
 class MainContainer extends React.Component{
   constructor(props,context) {

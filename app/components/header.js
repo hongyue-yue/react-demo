@@ -1,6 +1,6 @@
 import React from "react"
 import MenuItem from "./menuItem"
-import "../style/style.scss"
+
 
 export default class Header extends React.Component{
     constructor(props,context) {
@@ -13,7 +13,7 @@ export default class Header extends React.Component{
        this.animateCon=this.animateCon.bind(this)
     }
     handleToggleTheme(id){
-      
+
       this.context.router.push(`/theme/${id}`)
        /*if(id){
          this.props.action.get_theme(id)

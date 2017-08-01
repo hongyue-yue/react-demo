@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
 import * as Action from "../redux/action"
-import '../style/style.scss'
 import Main from "../components/main"
 
 class StoryListContainer extends React.Component{

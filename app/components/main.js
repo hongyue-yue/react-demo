@@ -1,6 +1,6 @@
 import React from "react"
 import MainList from './mainList'
-import "../style/style.scss"
+
 
 export default class Main extends React.Component{
       constructor(props,context) {

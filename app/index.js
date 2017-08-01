@@ -6,6 +6,7 @@ import store from "./redux/store"
 import MainContainer from "./containers/MainContainer"
 import StoryListContainer from "./containers/StoryListContainer"
 import ThemesContainer from "./containers/ThemesContainer"
+import './style/style.scss'
 
 ReactDOM.render(
    <Provider store={store}>

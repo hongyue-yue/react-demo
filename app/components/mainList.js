@@ -1,5 +1,5 @@
 import React from "react"
-import "../style/style.scss"
+
 
 export default class MainList extends React.Component{
        constructor(props) {
