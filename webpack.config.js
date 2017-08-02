@@ -6,17 +6,12 @@ var production = process.env.NODE_ENV === 'production'
 var plugins = [];
 var loader='style!css!sass';
 if(production) {
-	plugins = [
-		new webpack.optimize.UglifyJsPlugin({
-			mangle:   true,
-			compress: {
-				warnings: false,
-			}
-	}),
-	new ExtractTextPlugin('style.css'),
-	new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
+plugins = [
+		new webpack.optimize.UglifyJsPlugin(),
+	  new ExtractTextPlugin('style.css'),
+	  new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
 	            filename: './index.html', //生成的html存放路径，相对于path
-	            template: './app/index.html', //html模板路径
+	            template: './index.html', //html模板路径
 	            inject: 'body', //js插入的位置，true/'head'/'body'/false
 	            hash: true, //为静态资源生成hash值
 	            //chunks: ['bundle'],//需要引入的chunk，不配置就会引入所有页面的资源
