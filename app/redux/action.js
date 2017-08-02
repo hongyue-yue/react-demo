@@ -5,7 +5,7 @@ export const load_themes_list_data= () => {
 		if(getState().themeList.length > 0) {
 			return;
 		}
-		 axios.get('/api/themesList').then(function(data){
+		 axios.get('http://localhost:4000/api/themesList').then(function(data){
        dispatch(LOAD_THEMES_LIST(data.data.data.others))
 		 })
 
@@ -13,14 +13,14 @@ export const load_themes_list_data= () => {
 }
 export const get_list_data=()=>{
    return(dispatch,getState)=>{
-      axios.get('/api/topStory').then(function(data){
+      axios.get('http://localhost:4000/api/topStory').then(function(data){
          dispatch(GET_LATEST(data.data))
 			})
    }
 }
 export const get_theme=(id)=>{
   return (dispatch)=>{
-     axios.get('/api/theme/',{params:{id}}).then(function(data){
+     axios.get('http://localhost:4000/api/theme/',{params:{id}}).then(function(data){
          dispatch(GET_THEME(data))
 		 })
 
