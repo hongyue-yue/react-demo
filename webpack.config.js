@@ -41,7 +41,9 @@ module.exports = {
 	output: {
 		path: path.join(__dirname, 'public'),
 		filename: filename,
+		sourceMapFilename: '[file].map',
 		publicPath:publicPath,
+		chunkFilename: 'js/[name].[chunkhash].js',
 	},
 	module: {
 		loaders: [
