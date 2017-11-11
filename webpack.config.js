@@ -18,14 +18,18 @@ var plugins = [
 					 removeComments: true, //移除HTML中的注释
 					 collapseWhitespace: false //删除空白符与换行符
 			 }
-})
+  }),
 ];
 if(production) {
 plugins =plugins.concat([
 	  new CleanWebpackPlugin(['public']),
 		new webpack.optimize.UglifyJsPlugin(),
 	  new ExtractTextPlugin({ filename: 'css/[name].[contenthash].css', disable: false, allChunks: true }),
-
+		new webpack.DefinePlugin({
+						'process.env': {
+								'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+						}
+	  }),
 ]);
 loader=ExtractTextPlugin.extract('css-loader!sass-loader');
 filename='js/[name].[chunkhash].js';
