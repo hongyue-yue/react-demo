@@ -13,13 +13,14 @@ var plugins = [
 			 filename: './index.html', //生成的html存放路径，相对于path
 			 template: './index.html', //html模板路径
 			 inject: 'body', //js插入的位置，true/'head'/'body'/false
-			 chunks: ['index'],//需要引入的chunk，不配置就会引入所有页面的资源
+			 //chunks: ['index'],//需要引入的chunk，不配置就会引入所有页面的资源
 			 minify: { //压缩HTML文件
 					 removeComments: true, //移除HTML中的注释
 					 collapseWhitespace: false //删除空白符与换行符
 			 }
   }),
 ];
+
 if(production) {
 plugins =plugins.concat([
 	  new CleanWebpackPlugin(['public']),
@@ -30,6 +31,10 @@ plugins =plugins.concat([
 								'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
 						}
 	  }),
+		new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor'],
+      filename: 'js/vendor.js'
+    })
 ]);
 loader=ExtractTextPlugin.extract('css-loader!sass-loader');
 filename='js/[name].[chunkhash].js';
@@ -37,7 +42,12 @@ publicPath=''
 }
 
 module.exports = {
-	entry:{index: './app/index.js'},
+	entry:{app: [
+      'babel-polyfill',
+      './app/index'
+    ],
+    vendor: ['react'] //提取react模块作为公共的js文件
+	},
 	output: {
 		path: path.join(__dirname, 'public'),
 		filename: filename,
