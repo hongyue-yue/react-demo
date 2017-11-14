@@ -1,3 +1,5 @@
+'use strict'
+
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -7,7 +9,7 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 var production = process.env.NODE_ENV === 'production'
 var loader='style-loader!css-loader!sass-loader';
 var filename='[name].js';
-var publicPath='/'
+
 var plugins = [
 	new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
 			 filename: './index.html', //生成的html存放路径，相对于path
@@ -38,11 +40,11 @@ plugins =plugins.concat([
 ]);
 loader=ExtractTextPlugin.extract('css-loader!sass-loader');
 filename='js/[name].[chunkhash].js';
-publicPath=''
 }
 
 module.exports = {
-	entry:{app: [
+	entry:{
+		app: [
       'babel-polyfill',
       './app/index'
     ],
@@ -52,7 +54,7 @@ module.exports = {
 		path: path.join(__dirname, 'public'),
 		filename: filename,
 		sourceMapFilename: '[file].map',
-		publicPath:publicPath,
+		publicPath:'/',
 		chunkFilename: 'js/[name].[chunkhash].js',
 	},
 	module: {

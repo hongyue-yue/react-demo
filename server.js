@@ -32,7 +32,13 @@ var getThemeAPI=function(req,res){
 app.get('/api/topStory', getListAPI)
 app.get('/api/themesList', getThemesListAPI)
 app.get('/api/theme/*', getThemeAPI)
-
+app.get('/api/image', function(req, res) {
+  var superagent = require('superagent');
+  var request = superagent.get(req.query.url);
+  request.pipe(res);
+  request.on('end', function(){
+  });
+})
 //api end
 
 app.get('*', function(req, res) {
