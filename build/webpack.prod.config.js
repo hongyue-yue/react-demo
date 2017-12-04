@@ -6,7 +6,6 @@ const merge = require('webpack-merge')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const baseWebpackConfig = require('./webpack.base.config.js')
-console.log(__dirname)
 module.exports =merge(baseWebpackConfig,{
   plugins:[
     new CleanWebpackPlugin(['public'],{
