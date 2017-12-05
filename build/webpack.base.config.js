@@ -7,7 +7,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
 
-
 let production = process.env.NODE_ENV === 'production'
 
 module.exports = {
@@ -36,7 +35,9 @@ module.exports = {
 			{
 				test: /.scss$/,
 				exclude: /node_modules/,
-				loader: production?ExtractTextPlugin.extract({fallback:'style-loader',use:[{loader:'css-loader',options:{minimize: true}},'postcss-loader','sass-loader']}):'style-loader!css-loader!postcss-loader!sass-loader'
+				loader: production?
+               ExtractTextPlugin.extract({fallback:'style-loader',use:[{loader:'css-loader',options:{minimize: true}},'postcss-loader','sass-loader']})
+               :'style-loader!css-loader!postcss-loader!sass-loader'
 			},
 			{
               test: /\.(html|tpl)$/,
@@ -73,13 +74,6 @@ module.exports = {
   					 collapseWhitespace: false //删除空白符与换行符
   			 }
     }),
-    new webpack.LoaderOptionsPlugin({
-    	options: {
-            postcss: function () {
-               return [precss,autoprefixer];
-            }
-        }
-    })
   ],
 	// proxy
 	/*devServer: {
